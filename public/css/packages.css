@@ -1,0 +1,8 @@
+.modalInfoHeading{
+    background-color: lightyellow;
+}
+
+.packageDeletedBtn:hover {
+    background-color: red;
+    background-image: none;
+}

@@ -1,0 +1,43 @@
+user can register to become a destributer
+user fills in his personal information
+after the admin review the informations the user can become a Delivery man
+after that the user can see the delivery destination in the map
+user can also view additional information of the delivery (destination...)
+after the destributer delivers the goods the delivery is removed from the map
+the admin validate the delivery and manages the goods 
+
+
+user{
+    firstname, lastname, email, verified, phone, cin, role, adress
+}
+
+livereur{
+    permet,
+}
+
+colier{
+    num, weight, delivers_date, from, to, description
+}
+
+
+google maps javascript api key : "AIzaSyDKnDP46t0OUT-fiboU-hMV06Lue8VB2vA"
+
+some locations
+34.0472718, -6.7934402
+35.0472718, -7.7934402
+36.0472718, -8.7934402
+37.0472718, -9.7934402
+38.0472718, 0.7934402
+39.0472718, 1.7934402
+40.0472718, 2.7934402
+41.0472718, 3.7934402
+42.0472718, 4.7934402
+43.0472718, 5.7934402
+44.0472718, 6.7934402
+45.0472718, 7.7934402
+46.0472718, 8.7934402
+47.0472718, 9.7934402
+
+user authentification is done 7/10/19
+admin add/edit and delete of package is done
+admin mark user as delverer is done
