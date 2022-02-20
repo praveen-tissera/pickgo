@@ -47,6 +47,6 @@
     <!-- submit -->
     <button class="btn btn-lg btn-primary btn-block" type="submit">{{ __('login.login') }}</button>
     <a href="{{ route('register') }}">{{ __('login.dt_have_account') }} {{ __('login.register') }}</a>
-    <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+    <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
 </form>
 @endsection
