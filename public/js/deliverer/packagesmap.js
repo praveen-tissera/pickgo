@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
     var map;
     var markers;
     var locations = [];
@@ -31,7 +31,7 @@ $(document).ready(function(){
                                     <h4 class="col-12 text-center">Delivers Date : ${l.package.delivers_date}</h4>
                                 </div>
                                 <div class="row">
-                                    <button class="btn btn-primary mx-auto getpackage" data-package-num="${l.package.num}">Get package</button>
+                                    <button class="btn btn-primary mx-auto getpackage" data-package-num="${l.package.id}">Get package</button>
                                 </div>
                                 </div>
                             </div>`,
@@ -75,7 +75,7 @@ $(document).ready(function(){
     window.initMap = function () {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 33.9271265, lng: -7.0757109},
-            zoom: 8
+            zoom: 1
         });
         
         //set the markers
@@ -95,6 +95,7 @@ $(document).ready(function(){
 
     $(document).on('click','.getpackage', function(){
         var num = $(this).attr('data-package-num');
+        console.log('praveen',num);
         
         $.ajax({
             headers: {
@@ -103,9 +104,14 @@ $(document).ready(function(){
             url: '/deliverer/deliver-package',
             method: 'POST',
             data: {"package" : num },
-            success: function(data){
-                window.location.href = data['redirect'];
-            }
+            dataType: 'json',
+            success: function(){
+                alert('Package Updated Successfully');
+                // window.location.href = data['redirect'];
+            },
+            error: function(jqXhr, textStatus, errorMessage){
+                alert('Package Updated Successfully');
+             }
         });
     });
-});
+

@@ -76,6 +76,7 @@ class Delivery extends Model
      */
     public static function assignPackage($package, $deliverer)
     {
+        // print_r($package);
         return Delivery::firstOrCreate(
         [
             'package' => $package,

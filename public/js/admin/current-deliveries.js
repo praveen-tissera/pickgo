@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
     var map;
     var markers;
     var locations = [];
@@ -84,7 +84,7 @@ $(document).ready(function(){
     window.initMap = function () {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 33.9271265, lng: -7.0757109},
-            zoom: 8
+            zoom: 1
         });
         
         //set the markers
@@ -101,4 +101,4 @@ $(document).ready(function(){
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
         );
     }
-});
+

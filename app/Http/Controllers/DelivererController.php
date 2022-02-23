@@ -42,14 +42,14 @@ class DelivererController extends Controller
         $validated = $request->validate([
             'package' => 'required',
         ]);
-
+// print_r($request->package);
         //assign a package to a deliverer
         $delivery = Delivery::assignPackage($request->package, Auth::id());
 
-        //sets the package status as delivering
+        // //sets the package status as delivering
         $package = Package::updatePackageStatus($request->package, 2);
 
-        //return the results
+        // //return the results
         return response()->json([
             'delivery' => $delivery,
             'package' => $package,
@@ -77,6 +77,9 @@ class DelivererController extends Controller
         foreach($delivery as $d){
             array_push($package, Package::package($d->package));
         }
+        // print_r('praveen package');
+        // print_r($package);
+        // print_r($delivery);
 //dd($package);
         //abort if the package is non existing
         //if(!isset($d->num)){

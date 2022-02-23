@@ -215,16 +215,17 @@ class Package extends Model
     public static function updatePackageStatus($package, $status)
     {
         $p = Package::where('id', $package)->first();
-
+        
         if(!isset($p->code)){
             $p = Package::where('num', $package)->first();
+           
         }
 
         if(gettype($status) === "string"){
             $status = DB::table('delivery_status')->where('status', $status)->first()->code;
         }
-            
-        return Package::where('id', $p->id)->update([
+        // print_r($package); 
+        return Package::where('id', $package)->update([
             'status' => $status,
         ]);
         

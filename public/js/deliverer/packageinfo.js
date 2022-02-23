@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
     var map;
     var markers;
     var locations = [];
@@ -63,7 +63,7 @@ $(document).ready(function(){
     window.initMap = function () {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 33.9271265, lng: -7.0757109},
-            zoom: 8
+            zoom: 1
         });
         
         //set the markers
@@ -80,8 +80,21 @@ $(document).ready(function(){
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
         );
     }
-});
 
+    $('.mark-package-delivered').click(function(){
+                var package = $('.package-num').attr('data-package-num');
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: '/deliverer/mark-delivered',
+                    method: 'POST',
+                    data: {"package" : package },
+                    success: function(data){
+                        // window.location.href = data['redirect'];
+                    }
+                });
+            });
 
 // legacy code for when the deliverer could deliver one package at a time
 // $(document).ready(function(){
