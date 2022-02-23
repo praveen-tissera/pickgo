@@ -1,130 +1,5 @@
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfcwVTCwWTisOjujfp98wN4pUxVvk6P2o&sensor=false" async defer></script>
 
-
-<script>
-    function makeRequest(url, callback) {
-        // var request;
-        // if (window.XMLHttpRequest) {
-        //     request = new XMLHttpRequest(); // IE7+, Firefox, Chrome, Opera, Safari
-        // } else {
-        //     request = new ActiveXObject("Microsoft.XMLHTTP"); // IE6, IE5
-        // }
-        // request.onreadystatechange = function() {
-        //     if (request.readyState == 4 && request.status == 200) {
-        //         callback(request);
-        //     }
-        // }
-        // request.open("POST", url, true);
-        // request.send();
-
-
-
-
-
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-        url: url,
-        method: 'POST',
-        async: true,
-        dataType: 'json',
-        success: function (data) {
-          console.log(data);
-
-          var packages = data['packages'];
-          callback(data);
-                // packages.forEach(p => {
-                //     console.log(p);
-                   
-                //     init_map(p);
-                // });
-
-
-        }
-      });  
-
-    }
-
-    /////////////////////////////////////////////////////////////////////
-    // var infowindow = new google.maps.InfoWindow();
-    function displayLocation(location,infowindow) {
-        
-        console.log('ppppppppppppppp',location);
-        var content = '<div class="infoWindow"><strong>' + location.to + '</strong>' +
-            '<br/>' + location.description +
-            '<br/>' + location.from + '</div>';
-
-        if (parseInt(location.lat) == 0) {
-            geocoder.geocode({
-                'address': location.address
-            }, function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: results[0].geometry.location,
-                        title: location.name
-                    });
-
-                    google.maps.event.addListener(marker, 'click', function() {
-                        infowindow.setContent(content);
-                        infowindow.open(map, marker);
-                    });
-                }
-            });
-        } else {
-            var position = new google.maps.LatLng(parseFloat(location.lat), parseFloat(location.lng));
-            var marker = new google.maps.Marker({
-                map: map,
-                position: position,
-                title: location.to
-            });
-
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.setContent(content);
-                infowindow.open(map, marker);
-            });
-        }
-    }
-    //////////////////////////////////////////////////////////////
-
-    //<![CDATA[
-
-    var map;
-
-    // Ban Jelačić Square - Center of Zagreb, Croatia
-    
-
-    function init() {
-        console.log('praveen');
-        var infowindow = new google.maps.InfoWindow();
-        var center = new google.maps.LatLng(45.812897, 15.97706);
-        var geocoder = new google.maps.Geocoder();
-        
-        var mapOptions = {
-            zoom: 13,
-            center: center,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-
-        map = new google.maps.Map(document.getElementById("map"), mapOptions);
-        makeRequest('/deliverer/undelivered-packages', function(data) {
-
-            // var data = JSON.parse(data.responseText);
-
-            for (var i = 0; i < data['packages'].length; i++) {
-                displayLocation(data['packages'][i],infowindow);
-            }
-        });
-
-        var marker = new google.maps.Marker({
-            map: map,
-            position: center,
-        });
-    }
-</script>
 
 
 
@@ -139,14 +14,14 @@
 
 
 @section('content')
-<div class="container" onload="init();">
+<div class="container" >
     <div id="map"></div>
 </div>
 @endsection
 
 @section('js')
 <script>
-    init();
+    // init();
     // var map;
     //   function getData() {
     //       console.log('test');
@@ -311,9 +186,9 @@
     */
 </script>
 
-<!-- <script src="{{ asset('js/deliverer/packagesmap.js') }}"></script>-->
+<script src="{{ asset('js/deliverer/packagesmap.js') }}"></script>
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key={{ config('deliverer.google-maps-api-key') }}&callback=initMap" async defer></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfcwVTCwWTisOjujfp98wN4pUxVvk6P2o&callback=initMap" async defer></script>
 
 
 @endsection

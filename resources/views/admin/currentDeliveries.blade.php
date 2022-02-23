@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('css')
@@ -6,8 +7,9 @@
 
 @section('js')
     <script src="{{ asset('js/admin/current-deliveries.js') }}"></script>
+    
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ config('deliverer.google-maps-api-key') }}&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfcwVTCwWTisOjujfp98wN4pUxVvk6P2o&callback=initMap" async defer></script>
 @endsection
 
 @section('content')
