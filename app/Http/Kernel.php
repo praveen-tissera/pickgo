@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
 
         //custom middlewares
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'user' => \App\Http\Middleware\UserMiddleware::class,
         'deliverer' => \App\Http\Middleware\DelivererMiddleware::class,
         'hasdelivery' => \App\Http\Middleware\HasDeliveryMiddleware::class,
         'seekdelivery' => \App\Http\Middleware\SeekDeliveryMiddleware::class,

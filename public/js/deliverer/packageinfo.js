@@ -91,7 +91,7 @@
                     method: 'POST',
                     data: {"package" : package },
                     success: function(data){
-                        // window.location.href = data['redirect'];
+                        window.location.href = data['redirect'];
                     }
                 });
             });

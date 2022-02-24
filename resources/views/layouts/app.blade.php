@@ -70,10 +70,10 @@
                                 <a class="nav-link" href="{{ route('packages') }}">{{ __('layout.packages') }}</a>
                             </li>
 
-                            {{-- current deliveries --}}
+                            <!-- {{-- current deliveries --}}
                             <li class="nav-item {{ Route::currentRouteName() === 'current-deliveries' ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('current-deliveries') }}">{{ __('layout.current-deliveries') }}</a>
-                            </li>
+                            </li> -->
                         @endif
 
                         {{-- test if the user is deliverer --}}
@@ -93,6 +93,21 @@
                                 </li>
                             @endif
                         @endif
+
+                        {{-- test if the user is admin --}}
+                        @if(\App\User::role() === "user")
+                            
+                         
+
+                            {{-- packages --}}
+                            <li class="nav-item {{ Route::currentRouteName() === 'all-packages' ? 'active' : '' }}">
+                                <a class="nav-link" href="user-all-packages">{{ __('layout.all-packages') }}</a>
+                            </li>
+
+                           
+                        @endif
+
+
                     @endif
                 </ul>
 

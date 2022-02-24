@@ -15,8 +15,16 @@ Auth::routes(['register' => false, 'login' => false]);
 Route::get('/register', array('as' => 'register', 'uses' => 'API\AuthController@register'))->middleware('guest');
 Route::post('/register', array('as' => 'register', 'uses' => 'API\AuthController@register'))->middleware('guest');;
 
-
 Route::get('/', array('as' => 'home', 'uses' => 'HomeController@home'));
+
+Route::group(['middleware' => 'user'], function () {
+    
+     //list of all packages
+     Route::get('/user-all-packages', array('as' => 'all-packages', 'uses' => 'UsersController@allPackages'));
+     //add a package
+    Route::get('user-add-package', array('as' => 'user-add-package', 'uses' => 'UsersController@addPackage'));
+    Route::post('user-add-package', array('as' => 'user-add-package', 'uses' => 'UsersController@addPackage'));
+});
 
 Route::group(['middleware' => 'admin'], function () {
     //list user with the role of user
