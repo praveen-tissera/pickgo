@@ -23,7 +23,7 @@ return [
     'edit_package' => 'Edit Package',
 
     //packages colors legend
-    'package_beign_delivered' => 'Package is beign delivered',
+    'package_beign_delivered' => 'Package is begin delivered',
     'package_delivered' => 'Package is delivered',
     'package_less_1_day' => 'Package has less than 1 day to be delivered',
     'package_less_2_day' => 'Package has less than 2 days to be delivered',
